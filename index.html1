@@ -5,17 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vibes Quiz</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
-    .question { margin-bottom: 25px; }
-    label { font-weight: bold; }
-    select, input[type="number"], input[type="range"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 10px;
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fafafa;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      color: #333;
     }
-    button { padding: 10px 20px; font-size: 16px; }
-    h2 { margin-top: 30px; }
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1em;
+      width: 100%;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0077dd;
+    }
+    #result {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +145,20 @@
         total += parseInt(value);
       }
 
-      document.getElementById('result').innerText = `🔥 Your Score: ${total} / 50`;
+      const percentage = Math.round((total / 50) * 100);
+      let message = "";
+
+      if (total >= 40) {
+        message = "✅ GO TO RIDE";
+      } else if (total >= 30) {
+        message = "⚠️ go with caution";
+      } else if (total >= 20) {
+        message = "😬 politely, you should probably not go!!!!";
+      } else {
+        message = "❌ FAIL — DO NOT RIDE";
+      }
+
+      document.getElementById('result').innerText = `🔥 ${percentage}% VIBE MATCH\n${message}`;
     }
   </script>
 
