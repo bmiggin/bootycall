@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vibes Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    .question { margin-bottom: 25px; }
+    label { font-weight: bold; }
+    select, input[type="number"], input[type="range"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button { padding: 10px 20px; font-size: 16px; }
+    h2 { margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Vibes Quiz</h1>
+  <form id="quizForm">
+
+    <div class="question">
+      <label>1. How horny are you? (0–10)</label>
+      <input type="number" name="q1" min="0" max="10" required>
+    </div>
+
+    <div class="question">
+      <label>2. Where are they?</label>
+      <select name="q2" required>
+        <option value="">-- Choose a location --</option>
+        <option value="10">El Born</option>
+        <option value="9">Gotico</option>
+        <option value="8">Raval</option>
+        <option value="7">Arc de Triumph</option>
+        <option value="6">Pobesec</option>
+        <option value="5">Eixample</option>
+        <option value="4">Poblenou</option>
+        <option value="3">Sants</option>
+        <option value="2">El Clot</option>
+        <option value="1">Sant Andreu</option>
+        <option value="0">L'Hospitalet</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label>3. How hot are they? (0–10)</label>
+      <input type="number" name="q3" min="0" max="10" required>
+    </div>
+
+    <div class="question">
+      <label>4. What time is it?</label>
+      <select name="q4" required>
+        <option value="">-- Select time range --</option>
+        <option value="10">18h to 19h (or before)</option>
+        <option value="9">19h to 20h</option>
+        <option value="8">20h to 21h</option>
+        <option value="7">21h to 22h</option>
+        <option value="6">22h to 23h</option>
+        <option value="5">23h to 00h</option>
+        <option value="4">00h to 01h</option>
+        <option value="3">01h to 02h</option>
+        <option value="2">02h to 03h</option>
+        <option value="1">03h to 04h</option>
+        <option value="0">After 04h</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label>5. Do they have an extra je ne sais quoi? (0–10)</label>
+      <p style="font-style: italic; margin-top: -5px;">
+        0 points if it's an ex, 5 points if they have a pool, 10 if it's Harry Styles — you know yourself.
+      </p>
+      <input type="number" name="q5" min="0" max="10" required>
+    </div>
+
+    <button type="button" onclick="calculateScore()">Submit</button>
+  </form>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function calculateScore() {
+      const form = document.forms['quizForm'];
+      let total = 0;
+
+      for (let i = 1; i <= 5; i++) {
+        const value = form[`q${i}`].value;
+        if (value === '') {
+          alert(`Please complete question ${i}`);
+          return;
+        }
+        total += parseInt(value);
+      }
+
+      document.getElementById('result').innerText = `🔥 Your Score: ${total} / 50`;
+    }
+  </script>
+
+</body>
+</html>
