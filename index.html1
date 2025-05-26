@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vibes Quiz</title>
+  <title>Booty Call Calculator</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
@@ -69,7 +69,7 @@
 </head>
 <body>
 
-  <h1>🧠 Vibes Quiz</h1>
+  <h1>🍑 Booty Call Calculator</h1>
   <form id="quizForm">
 
     <div class="question">
